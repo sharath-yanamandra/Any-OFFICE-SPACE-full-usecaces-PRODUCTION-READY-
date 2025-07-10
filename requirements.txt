@@ -1,0 +1,288 @@
+# Script 6: requirements.txt
+# File Path: requirements.txt
+#
+# Datacenter Monitoring System - Python Dependencies
+
+# ====================
+# CORE DEPENDENCIES
+# ====================
+
+# Computer Vision and AI
+opencv-python==4.8.1.78
+ultralytics==8.0.196
+torch==2.1.0
+torchvision==0.16.0
+numpy==1.24.3
+scipy==1.11.3
+
+# Image Processing
+Pillow==10.0.1
+scikit-image==0.21.0
+
+# ====================
+# DATABASE & STORAGE
+# ====================
+
+# MySQL Database
+mysql-connector-python==8.1.0
+SQLAlchemy==2.0.23
+pymysql==1.1.0
+
+# Cloud Storage
+google-cloud-storage==2.10.0
+google-auth==2.23.4
+
+# ====================
+# WEB FRAMEWORK (Future API)
+# ====================
+
+# FastAPI for REST API
+fastapi==0.104.1
+uvicorn[standard]==0.24.0
+pydantic==2.4.2
+python-multipart==0.0.6
+
+# Authentication & Security
+python-jose[cryptography]==3.3.0
+passlib[bcrypt]==1.7.4
+bcrypt==4.0.1
+
+# ====================
+# COMMUNICATION & ALERTS
+# ====================
+
+# SMS Notifications
+twilio==8.8.0
+
+# Email Support
+emails==0.6
+jinja2==3.1.2
+
+# Timezone Support
+pytz==2023.3
+
+# ====================
+# CONFIGURATION & ENVIRONMENT
+# ====================
+
+# Environment Management
+python-dotenv==1.0.0
+pydantic-settings==2.0.3
+
+# Configuration Files
+PyYAML==6.0.1
+configparser==6.0.0
+
+# ====================
+# NETWORKING & PROTOCOLS
+# ====================
+
+# HTTP Requests
+requests==2.31.0
+httpx==0.25.1
+
+# WebSocket Support (Future)
+websockets==11.0.3
+
+# ====================
+# UTILITIES & HELPERS
+# ====================
+
+# Date and Time
+python-dateutil==2.8.2
+
+# JSON Processing
+orjson==3.9.9
+
+# Validation
+jsonschema==4.19.2
+
+# UUID Generation
+uuid==1.30
+
+# ====================
+# MONITORING & LOGGING
+# ====================
+
+# Structured Logging
+structlog==23.2.0
+colorlog==6.7.0
+
+# Performance Monitoring
+psutil==5.9.6
+GPUtil==1.4.0
+
+# ====================
+# CONCURRENCY & ASYNC
+# ====================
+
+# Async Support
+asyncio-mqtt==0.16.1
+aiofiles==23.2.1
+aiomysql==0.2.0
+
+# Thread Pool
+concurrent-futures==3.1.1
+
+# ====================
+# DEVELOPMENT & TESTING
+# ====================
+
+# Testing Framework
+pytest==7.4.3
+pytest-asyncio==0.21.1
+pytest-cov==4.1.0
+pytest-mock==3.12.0
+
+# Code Quality
+black==23.9.1
+flake8==6.1.0
+isort==5.12.0
+mypy==1.6.1
+
+# Development Tools
+ipython==8.16.1
+jupyter==1.0.0
+
+# ====================
+# SERIALIZATION & DATA
+# ====================
+
+# Data Serialization
+msgpack==1.0.7
+pickle5==0.0.12
+
+# Data Analysis (Optional)
+pandas==2.1.2
+matplotlib==3.8.1
+
+# ====================
+# SYSTEM INTEGRATION
+# ====================
+
+# System Monitoring
+docker==6.1.3
+kubernetes==28.1.0
+
+# Process Management
+supervisor==4.2.5
+
+# ====================
+# SECURITY
+# ====================
+
+# Cryptography
+cryptography==41.0.7
+secrets==1.0.0
+
+# Secure Random
+secrets-manager==0.1.0
+
+# ====================
+# CACHING (Future)
+# ====================
+
+# Redis Support
+redis==5.0.1
+aioredis==2.0.1
+
+# Memory Caching
+cachetools==5.3.2
+
+# ====================
+# API DOCUMENTATION (Future)
+# ====================
+
+# OpenAPI Documentation
+swagger-ui-bundle==0.0.9
+
+# ====================
+# DATACENTER SPECIFIC
+# ====================
+
+# PPE Detection Models (Custom)
+# ppe-detection==1.0.0  # Custom package when available
+
+# Object Tracking
+filterpy==1.4.5  # For Kalman filtering
+lap==0.4.0       # For Hungarian algorithm in tracking
+
+# Motion Detection
+motiondetector==1.0.0
+
+# ====================
+# OPTIONAL INTEGRATIONS
+# ====================
+
+# Slack Integration
+slack-sdk==3.22.0
+
+# Microsoft Teams Integration
+pymsteams==0.2.2
+
+# Webhook Support
+webhook==1.0.0
+
+# ====================
+# PRODUCTION DEPENDENCIES
+# ====================
+
+# WSGI Server
+gunicorn==21.2.0
+
+# Reverse Proxy Support
+nginx==1.0.0
+
+# SSL/TLS Support
+certifi==2023.7.22
+
+# ====================
+# MONITORING & METRICS
+# ====================
+
+# Application Metrics
+prometheus-client==0.18.0
+
+# Health Checks
+healthcheck==1.3.3
+
+# ====================
+# VERSION PINNING NOTES
+# ====================
+
+# Note: Version numbers are pinned for stability
+# Update versions carefully and test thoroughly
+# Some packages may have newer versions available
+# 
+# Critical packages to keep updated:
+# - ultralytics (YOLO models)
+# - opencv-python (computer vision)
+# - torch/torchvision (AI models)
+# - mysql-connector-python (database)
+# - fastapi (API framework)
+# 
+# Test compatibility before updating:
+# - torch and torchvision versions must be compatible
+# - opencv and ultralytics versions should be tested together
+# - Database connector versions should match MySQL server version
+
+# ====================
+# INSTALLATION NOTES
+# ====================
+
+# Install with: pip install -r requirements.txt
+# 
+# For GPU support, install CUDA-compatible PyTorch:
+# pip install torch torchvision --index-url https://download.pytorch.org/whl/cu118
+# 
+# For development setup:
+# pip install -r requirements.txt
+# pip install -e .
+# 
+# For production setup:
+# pip install -r requirements.txt --no-dev
+# 
+# Create virtual environment first:
+# python -m venv datacenter-monitoring-env
+# source datacenter-monitoring-env/bin/activate  # Linux/Mac
+# datacenter-monitoring-env\Scripts\activate     # Windows

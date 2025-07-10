@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Datacenter Monitoring System - UML Database Diagram</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.6.1/mermaid.min.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            margin: 0;
+            font-size: 2.5em;
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
+        
+        .header p {
+            margin: 10px 0 0 0;
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 30px;
+            background: #f8f9fa;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            border-left: 4px solid;
+        }
+        
+        .stat-card.tables { border-left-color: #3498db; }
+        .stat-card.relationships { border-left-color: #e74c3c; }
+        .stat-card.indexes { border-left-color: #2ecc71; }
+        .stat-card.views { border-left-color: #f39c12; }
+        
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        
+        .stat-label {
+            color: #7f8c8d;
+            margin-top: 5px;
+            font-weight: 500;
+        }
+        
+        .diagram-container {
+            padding: 30px;
+            background: white;
+        }
+        
+        .legend {
+            background: #f8f9fa;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+            border-left: 4px solid #3498db;
+        }
+        
+        .legend h3 {
+            margin-top: 0;
+            color: #2c3e50;
+        }
+        
+        .legend-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .color-box {
+            width: 20px;
+            height: 20px;
+            border-radius: 3px;
+        }
+        
+        .table-info {
+            background: #ecf0f1;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+        }
+        
+        .table-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .table-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .table-card h4 {
+            margin-top: 0;
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        
+        .table-card ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+        
+        .table-card li {
+            margin: 5px 0;
+            color: #34495e;
+        }
+        
+        #diagram {
+            width: 100%;
+            min-height: 800px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background: #fafafa;
+        }
+        
+        /* Custom mermaid styling */
+        .mermaid {
+            background: white !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🏢 DATACENTER MONITORING SYSTEM</h1>
+            <p>Complete UML Database Structure & Relationships</p>
+        </div>
+        
+        <div class="stats-grid">
+            <div class="stat-card tables">
+                <div class="stat-number">8</div>
+                <div class="stat-label">Core Tables</div>
+            </div>
+            <div class="stat-card relationships">
+                <div class="stat-number">12</div>
+                <div class="stat-label">Foreign Keys</div>
+            </div>
+            <div class="stat-card indexes">
+                <div class="stat-number">25+</div>
+                <div class="stat-label">Indexes</div>
+            </div>
+            <div class="stat-card views">
+                <div class="stat-number">2</div>
+                <div class="stat-label">Database Views</div>
+            </div>
+        </div>
+        
+        <div class="legend">
+            <h3>🎨 Table Color Legend</h3>
+            <div class="legend-grid">
+                <div class="legend-item">
+                    <div class="color-box" style="background: #FF6B6B;"></div>
+                    <span><strong>User Management</strong> - Authentication & Authorization</span>
+                </div>
+                <div class="legend-item">
+                    <div class="color-box" style="background: #4ECDC4;"></div>
+                    <span><strong>Infrastructure</strong> - Datacenters & Cameras</span>
+                </div>
+                <div class="legend-item">
+                    <div class="color-box" style="background: #45B7D1;"></div>
+                    <span><strong>Configuration</strong> - Zones & Rules</span>
+                </div>
+                <div class="legend-item">
+                    <div class="color-box" style="background: #96CEB4;"></div>
+                    <span><strong>Event Data</strong> - Events & Logs</span>
+                </div>
+                <div class="legend-item">
+                    <div class="color-box" style="background: #FFEAA7;"></div>
+                    <span><strong>Audit Trail</strong> - Access & Activity Logs</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="diagram-container">
+            <div id="diagram" class="mermaid">
+erDiagram
+    %% User Management Layer
+    USERS {
+        varchar(36) user_id PK "UUID Primary Key"
+        varchar(255) email UK "Unique Email"
+        varchar(255) full_name "Full Name"
+        varchar(255) hashed_password "Encrypted Password"
+        enum role "admin|operator|viewer"
+        boolean is_active "Account Status"
+        boolean is_verified "Email Verified"
+        varchar(255) reset_token "Password Reset"
+        datetime reset_token_expires "Token Expiry"
+        timestamp created_at "Creation Time"
+        timestamp updated_at "Last Modified"
+    }
+
+    %% Infrastructure Layer
+    DATACENTERS {
+        int datacenter_id PK "Auto Increment"
+        varchar(36) user_id FK "Owner Reference"
+        varchar(255) name "Datacenter Name"
+        text description "Description"
+        varchar(255) location "City/Region"
+        text address "Full Address"
+        varchar(255) coordinates "GPS Coordinates"
+        enum facility_type "tier1|tier2|tier3|tier4"
+        json capacity_info "Rack Count, Power"
+        json contact_info "Emergency Contacts"
+        enum status "active|maintenance|inactive"
+        json metadata "Additional Properties"
+        timestamp created_at "Creation Time"
+        timestamp updated_at "Last Modified"
+    }
+
+    CAMERAS {
+        int camera_id PK "Auto Increment"
+        int datacenter_id FK "Datacenter Reference"
+        varchar(255) name "Camera Name"
+        varchar(255) stream_url "RTSP/HTTP Stream"
+        enum camera_type "dc_entry_monitor|dc_server_room|dc_corridor|dc_perimeter|dc_critical_zone|dc_common_area"
+        json location_details "Floor, Rack Row, Position"
+        enum status "active|inactive|maintenance|fault"
+        json metadata "Resolution, FPS, Features"
+        date installation_date "Install Date"
+        date last_maintenance "Last Service"
+        timestamp created_at "Creation Time"
+        timestamp updated_at "Last Modified"
+    }
+
+    %% Configuration Layer
+    ZONES {
+        int zone_id PK "Auto Increment"
+        int camera_id FK "Camera Reference"
+        varchar(255) name "Zone Name"
+        enum zone_type "entry_zone|server_zone|restricted_zone|common_zone|perimeter_zone|critical_zone"
+        json polygon_coordinates "X,Y Coordinate Array"
+        enum security_level "public|restricted|high_security|critical"
+        json access_requirements "PPE, Badge, Escort"
+        json monitoring_rules "Occupancy, Time Limits"
+        json metadata "Additional Properties"
+        timestamp created_at "Creation Time"
+        timestamp updated_at "Last Modified"
+    }
+
+    RULES {
+        int rule_id PK "Auto Increment"
+        int camera_id FK "Camera Reference"
+        varchar(255) name "Rule Name"
+        text description "Rule Description"
+        enum event_type "tailgating|intrusion|ppe_violation|loitering|people_counting|camera_tamper|unauthorized_access"
+        enum severity "low|medium|high|critical"
+        json parameters "Rule-Specific Config"
+        json schedule "Active Time Periods"
+        json notification_settings "Alert Configuration"
+        boolean enabled "Rule Active Status"
+        timestamp created_at "Creation Time"
+        timestamp updated_at "Last Modified"
+    }
+
+    %% Event Data Layer
+    EVENTS {
+        varchar(36) event_id PK "UUID Event ID"
+        int rule_id FK "Triggering Rule"
+        int camera_id FK "Source Camera"
+        int zone_id FK "Zone Reference"
+        timestamp timestamp "Event Time"
+        enum event_type "Event Category"
+        enum severity "Priority Level"
+        json detection_data "AI Detection Results"
+        varchar(255) snapshot_url "Image Path"
+        varchar(255) video_clip_url "Video Path"
+        enum status "new|acknowledged|resolved|false_positive"
+        varchar(36) acknowledged_by FK "User Who Acknowledged"
+        timestamp acknowledged_at "Acknowledgment Time"
+        text resolution_notes "Resolution Details"
+        varchar(36) resolved_by FK "User Who Resolved"
+        timestamp resolved_at "Resolution Time"
+        timestamp created_at "Creation Time"
+        timestamp updated_at "Last Modified"
+    }
+
+    %% Audit Trail Layer
+    ACCESS_LOGS {
+        bigint log_id PK "Auto Increment BigInt"
+        int datacenter_id FK "Datacenter Reference"
+        int camera_id FK "Source Camera"
+        int zone_id FK "Zone Reference"
+        varchar(255) person_id "Badge ID/Person ID"
+        enum access_type "entry|exit|denied|tailgating"
+        timestamp timestamp "Access Time"
+        float detection_confidence "AI Confidence Score"
+        json additional_data "PPE Status, Duration"
+        timestamp created_at "Log Creation Time"
+    }
+
+    USER_ACTIVITY_LOGS {
+        bigint log_id PK "Auto Increment BigInt"
+        varchar(36) user_id FK "User Reference"
+        varchar(255) action "Action Performed"
+        varchar(255) resource "Resource Accessed"
+        json details "Action Details"
+        varchar(45) ip_address "Client IP"
+        varchar(255) user_agent "Browser/Client"
+        timestamp timestamp "Action Time"
+    }
+
+    %% Core Relationships
+    USERS ||--o{ DATACENTERS : "owns (1:many)"
+    USERS ||--o{ USER_ACTIVITY_LOGS : "generates (1:many)"
+    USERS ||--o{ EVENTS : "acknowledges (1:many)"
+    USERS ||--o{ EVENTS : "resolves (1:many)"
+    
+    DATACENTERS ||--o{ CAMERAS : "contains (1:many)"
+    DATACENTERS ||--o{ ACCESS_LOGS : "tracks (1:many)"
+    
+    CAMERAS ||--o{ ZONES : "monitors (1:many)"
+    CAMERAS ||--o{ RULES : "enforces (1:many)"
+    CAMERAS ||--o{ EVENTS : "detects (1:many)"
+    CAMERAS ||--o{ ACCESS_LOGS : "records (1:many)"
+    
+    ZONES ||--o{ EVENTS : "triggers (1:many)"
+    ZONES ||--o{ ACCESS_LOGS : "tracks (1:many)"
+    
+    RULES ||--o{ EVENTS : "generates (1:many)"
+            </div>
+        </div>
+        
+        <div class="table-info">
+            <h3>📊 Table Details & Relationships</h3>
+            <div class="table-grid">
+                <div class="table-card">
+                    <h4>👥 User Management</h4>
+                    <ul>
+                        <li><strong>USERS:</strong> Multi-tenant user authentication</li>
+                        <li><strong>Roles:</strong> admin, operator, viewer</li>
+                        <li><strong>Features:</strong> Password reset, email verification</li>
+                        <li><strong>Relationships:</strong> 1:many with datacenters</li>
+                    </ul>
+                </div>
+                
+                <div class="table-card">
+                    <h4>🏢 Infrastructure</h4>
+                    <ul>
+                        <li><strong>DATACENTERS:</strong> Facility management (Tier 1-4)</li>
+                        <li><strong>CAMERAS:</strong> 6 specialized camera types</li>
+                        <li><strong>Features:</strong> RTSP streams, metadata, status</li>
+                        <li><strong>Hierarchy:</strong> Users → Datacenters → Cameras</li>
+                    </ul>
+                </div>
+                
+                <div class="table-card">
+                    <h4>⚙️ Configuration</h4>
+                    <ul>
+                        <li><strong>ZONES:</strong> Polygon-based monitoring areas</li>
+                        <li><strong>RULES:</strong> AI detection rules & parameters</li>
+                        <li><strong>Features:</strong> JSON configuration, scheduling</li>
+                        <li><strong>Security:</strong> 4 security levels</li>
+                    </ul>
+                </div>
+                
+                <div class="table-card">
+                    <h4>📡 Event Data</h4>
+                    <ul>
+                        <li><strong>EVENTS:</strong> Security incidents with workflow</li>
+                        <li><strong>Status:</strong> new → acknowledged → resolved</li>
+                        <li><strong>Media:</strong> Snapshots and video clips</li>
+                        <li><strong>Types:</strong> 7 Phase 1 event categories</li>
+                    </ul>
+                </div>
+                
+                <div class="table-card">
+                    <h4>📋 Audit Trail</h4>
+                    <ul>
+                        <li><strong>ACCESS_LOGS:</strong> Personnel movement tracking</li>
+                        <li><strong>USER_ACTIVITY_LOGS:</strong> System usage audit</li>
+                        <li><strong>Features:</strong> High-volume BigInt PKs</li>
+                        <li><strong>Compliance:</strong> Complete audit trail</li>
+                    </ul>
+                </div>
+                
+                <div class="table-card">
+                    <h4>🔍 Database Views</h4>
+                    <ul>
+                        <li><strong>cameras_detailed_view:</strong> Cameras with datacenter info</li>
+                        <li><strong>active_events_view:</strong> Current security events</li>
+                        <li><strong>Purpose:</strong> Optimized query performance</li>
+                        <li><strong>Features:</strong> Real-time monitoring dashboard</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize Mermaid with custom configuration
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'default',
+            themeVariables: {
+                primaryColor: '#ff6b6b',
+                primaryTextColor: '#2c3e50',
+                primaryBorderColor: '#3498db',
+                lineColor: '#95a5a6',
+                secondaryColor: '#4ecdc4',
+                tertiaryColor: '#45b7d1',
+                background: '#ffffff',
+                mainBkg: '#ffffff',
+                secondBkg: '#f8f9fa',
+                tertiaryBkg: '#ecf0f1'
+            },
+            er: {
+                diagramPadding: 20,
+                layoutDirection: 'TB',
+                minEntityWidth: 200,
+                minEntityHeight: 150,
+                entityPadding: 15,
+                fontSize: 12,
+                useMaxWidth: true
+            }
+        });
+
+        // Add some interactive features
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add click effects to stat cards
+            const statCards = document.querySelectorAll('.stat-card');
+            statCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    this.style.transform = 'scale(1.05)';
+                    this.style.transition = 'transform 0.2s ease';
+                    setTimeout(() => {
+                        this.style.transform = 'scale(1)';
+                    }, 200);
+                });
+            });
+
+            // Add hover effects to table cards
+            const tableCards = document.querySelectorAll('.table-card');
+            tableCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.boxShadow = '0 8px 25px rgba(0,0,0,0.15)';
+                    this.style.transition = 'box-shadow 0.3s ease';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
